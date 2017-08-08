@@ -48,3 +48,14 @@ void insert_edge(GraphType *g, int u, int v)
 	node->link = g->adj_list[u];
 	g->adj_list[u] = node->link;
 }
+
+//리스트로 구현한 깊이 우선 탐색 
+void dfs_list(GraphType *g, int v)
+{
+	GraphNode *w;
+	visited[v] = TRUE;
+	printf("%d", v);
+	for(w = g->adj_list[v]; w; w=w->link)
+		if(!visited[w->vertex])
+			dfs_list(g, w->vertex);
+}
