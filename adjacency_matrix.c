@@ -42,3 +42,18 @@ void insert_edge(GraphType *g, int start, int end)
 	g->adj_mat[start][end] = 1;
 	g->adj_mat[end][start] = 1;
 }
+
+//인접행렬로 표현된 깊이 우선 탐색
+void dfs_mat(GraphType *g, int v)
+{
+	int w;
+
+	visited[v] = TRUE;
+	printf("%d", v);
+
+	for(w=0; w < g->n; w++)
+	{
+		if(g->adj_mat[v][w] && !visited[w])
+			dfs_mat(g, w);
+	}
+}
